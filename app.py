@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request, redirect, json, jsonify
-import dogeON
+import dson
 import requests
 
 app = Flask(__name__)
@@ -8,7 +8,7 @@ app = Flask(__name__)
 def index(url):
     print url
     if request.method == 'GET':
-        return requests.get(url, params=request.args).text
+        return dson.dumps(requests.get(url, params=request.args).json())
     return "Hello"
 
 if __name__ == '__main__':
