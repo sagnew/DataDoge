@@ -9,7 +9,10 @@ def index(url):
     print url
     if request.method == 'GET':
         return dson.dumps(requests.get(url, params=request.args).json())
-    return "Hello"
+    elif request.method == 'POST':
+        res = requests.post(url, data=request.json)
+        return dson.dumps(res.json())
+    return "such 'error' much sorry wow"
 
 if __name__ == '__main__':
     # if I am being run from the command line.
