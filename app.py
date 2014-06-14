@@ -1,5 +1,7 @@
-from flask import Flask, render_template, request, redirect
+from flask import Flask, render_template, request, redirect, json, jsonify
+import dogeON
 import requests
+import urllib
 
 app = Flask(__name__)
 
