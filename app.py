@@ -3,10 +3,11 @@ import requests
 
 app = Flask(__name__)
 
-@app.route('/', methods=['get', 'post', 'put', 'delete'])
-def index():
+@app.route('/<path:url>', methods=['get', 'post', 'put', 'delete'])
+def index(url):
+    print url
     if request.method == 'GET':
-        return "Naw"
+        return requests.get(url, params=request.args).text
     return "Hello"
 
 if __name__ == '__main__':
